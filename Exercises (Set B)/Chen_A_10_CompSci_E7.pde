@@ -1,7 +1,7 @@
 /*
   Description: Gradient and Overlap
   Author: Andy Chen
-  Date of last edit: Mar 29, 2019
+  Date of last edit: May 02, 2019
  */
 
 void setup() {
@@ -20,11 +20,16 @@ void draw() {
 void bwgradient() {
   stroke(0);
   strokeWeight(0.5);
-  for (int i = 0; i < 16; i++) {
-    for (int j = 1; j < 17; j++) {
+  int i = 0;
+  int j = 0;
+  while (i < 16) {
+    while (j < 17) {
       fill(i*16);
       ellipse(x*j - 10, y + i*20, 20, 20);
+      j++;
     }
+    i++;
+    j = 0;
   }
 }
 
@@ -32,10 +37,12 @@ void pinkcir() {
   noStroke();
   int s = 200;
   int r = 214;
-  for (int i = 0; i < 214; i++) {
+  int k = 0;
+  while (k < 214) {
     fill(255, s, 255);
     ellipse(160, 469.5, r, r);
     s--;
     r--;
+    k++;
   }
 }
