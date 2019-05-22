@@ -1,27 +1,30 @@
 /*
   Description: Processing Assignment 2 -- Gwent: The Witcher Card Game | Art by Wlop
-  Author: Andy Chen
-  Date of last edit: Mar 29, 2019
+ Author: Andy Chen
+ Date of last edit: May 22, 2019
  */
 
 //Mouse Click for Comparison
-//Total Lines: 33698
-//After Line 87 are 16800 RGBValues (Plus 16800 Empty Lines), do not bother looking
+//Total Lines: 33708
+//After Line 94 are 16800 RGBValues (Plus 16800 Empty Lines), do not bother looking
 
 //Tasks
-  // Rect -- Line 53
-  // Header/Comments -- Line 1
-  // Input -- Line 73
-  // Output -- Line 31
-  // Custom Variables -- Line 23
-  // Built-In Variables -- Line 27
-  // Conditional Statements (If) -- Line 59
-  // Image -- Line 30
-  // Looping Structures (For) -- Line 48
-  // Looping Structures (While) -- Line 60
+// Rect -- Line 61
+// Header/Comments -- Line 1
+// Input -- Line 81
+// Output -- Line 34
+// Custom Variables -- Line 23
+// Built-In Variables -- Line 30
+// Conditional Statements (If) -- Line 50
+// Image -- Line 33
+// Looping Structures (For) -- Line 56
+// Looping Structures (While) -- Line 84
 
 PImage jpg;
+int imageLoad = 0;
 float opacity = 1;
+int modulo = 0;
+int counter = 0;
 ArrayList<String> arrList = new ArrayList<String>();
 
 void setup() {
@@ -42,7 +45,12 @@ void draw() {
   RGBValue7();
   RGBValue8();
   RGBValue9();
-  
+
+  //Rendering Original Image
+  if (imageLoad == 1) {
+    image(jpg, 0, 0, width, height + 5);
+  }
+
   //Rendition
   noStroke();
   for (int i = 0; i < 168; i++) {
@@ -53,28 +61,30 @@ void draw() {
       rect(i + i*5, j + j*5, 6, 6);
     }
   }
-  
-  //Fade-In
-  int tempValue = 0;
-  if (opacity != 0 && opacity != 256) {
-    while (opacity < 256 && tempValue < 1) {
-      opacity += 3.75;
-      tempValue++;
-    }
+
+  //Fade-In/Out
+  if (modulo % 2 == 0) {
+    opacity += 7.5;
+    counter++;
+  } else if (modulo % 2 == 1) {
+    imageLoad = 1;
+    opacity -= 7.5;
+    counter++;
   }
-  
-  //Image
-  if (opacity == 0) {
-    image(jpg, 0, 0, width, height + 5);
+  if (counter == 34) {
+    modulo++;
+    counter = 0;
   }
 }
 
 //Mouse Click Comparison
 void mouseClicked() {
-  if (opacity == 256) {
-    opacity = 0;
-  } else if (opacity == 0) {
-    opacity = 256;
+  //random ellipses
+  int i = 0;
+  while (imageLoad == 1 &&  i < 5) {
+    fill(random(255));
+    ellipse(random(1007), random(594), 5, 5);
+    i++;
   }
 }
 
