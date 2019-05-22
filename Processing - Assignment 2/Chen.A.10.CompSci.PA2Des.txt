@@ -4,3 +4,5 @@ Andy Chen
 I plan on making a rendition of an artistic piece using multiple `rect` as my shapes.
 It will begin by fading in from a black background with no stroke.
 After the fade-in has completed, a mouse click will allow a comparison between the original artwork and my rendition.
+
+EDIT: After the fade-in has completed, the original work and my rendition with alternate back and forth while a mouse click will draw random circles using a while loop.
