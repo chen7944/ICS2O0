@@ -1,2 +1,2 @@
 # ICS2O0
-2018/2019 Semester 2: Grade 10 Introduction to Computer Studies - Code
+A Collection of My ICS2O0 Coursework Code
